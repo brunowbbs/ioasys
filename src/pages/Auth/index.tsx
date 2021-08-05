@@ -9,11 +9,10 @@ import { signIn } from "../../services";
 export function Auth({ navigation }: any) {
   const [showPassword, setShowPassword] = useState(true);
   const [indicator, setIndicator] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("testeapple@ioasys.com.br");
+  const [password, setPassword] = useState("12341234");
   const [errorMessage, setErrorMessage] = useState("");
 
-  /*   const navigation = useNavigation(); */
   const dispatch = useDispatch();
 
   const handleLogin = async () => {

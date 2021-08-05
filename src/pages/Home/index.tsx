@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
-import Api from "../../services/Api";
 import ItemList from "../../components/ItemList";
 import Filter from "../../components/Filter";
 
@@ -15,22 +13,6 @@ export function Home() {
   const authCredentials = useSelector((state: any) => state.auth);
 
   useEffect(() => {
-    /* async function getEnterprises() {
-      try {
-        const result = await Api.get("/enterprises", {
-          headers: {
-            "access-token": authCredentials.accessToken,
-            client: authCredentials.client,
-            uid: authCredentials.uid,
-          },
-        });
-        setEnterprises(result.data.enterprises);
-      } catch (error) {
-        alert(`Erro ao buscar empresas: ${error}`);
-      }
-    }
-    getEnterprises();
-    setIsIndicator(false); */
     getAllEnterprise()
   }, []);
 
