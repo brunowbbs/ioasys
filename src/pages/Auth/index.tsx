@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { Platform } from "react-native";
 import { useDispatch } from "react-redux";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { useNavigation } from "@react-navigation/native";
 import * as S from './styles';
 
 import { signIn } from "../../services";
 
-export function Auth() {
+export function Auth({ navigation }: any) {
   const [showPassword, setShowPassword] = useState(true);
   const [indicator, setIndicator] = useState(false);
-  const [email, setEmail] = useState("testeapple@ioasys.com.br");
-  const [password, setPassword] = useState("12341234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const navigation = useNavigation();
+  /*   const navigation = useNavigation(); */
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
@@ -23,10 +22,6 @@ export function Auth() {
     try {
       setErrorMessage("");
       const responseFetchSignin = await signIn(email, password);
-
-      console.log(responseFetchSignin.headers["access-token"])
-      console.log(responseFetchSignin.headers.client)
-      console.log(responseFetchSignin.headers.uid)
 
       dispatch({
         type: "SET_CREDENTIALS",
