@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Pokedex" src="https://nerdin.com.br/img/empresa/511.png" width="250px" />
+  <img alt="Pokedex" src="https://nerdin.com.br/img/empresa/511.png" width="150px" />
 </h1>
 
 <p align="center">
@@ -9,11 +9,6 @@
   <a href="#books-requisitos">Requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-começando">Começando</a>&nbsp;&nbsp;&nbsp;
 </p>
-
-<h1 align="center">
-  <img alt="Home" src="./src/gifs/home.gif" width="250" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img alt="Details" src="./src/gifs/details.gif" width="250" />
-</h1>
 
 ## :page_with_curl: Sobre
 
