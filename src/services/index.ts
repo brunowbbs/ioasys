@@ -27,7 +27,7 @@ export function findAllEntreprises(credentials: any) {
   })
 }
 
-export function findEntreprisByNameAndCategory(credentials: any, type: string) {
+export function findEntrepriseByNameAndCategory(credentials: any, type: string) {
   const url = `/enterprises?enterprise_types=${type}`;
 
   return new Promise((resolve, reject) => {
@@ -44,6 +44,28 @@ export function findEntreprisByNameAndCategory(credentials: any, type: string) {
     })
   })
 }
+
+export function findEntrepriseById(credentials: any, id: number) {
+  const url = `/enterprises/${id}`;
+
+  return new Promise((resolve, reject) => {
+    api.get(url, {
+      headers: {
+        "access-token": credentials.accessToken,
+        client: credentials.client,
+        uid: credentials.uid,
+      },
+    }).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
+
+
+
+
 
 
 

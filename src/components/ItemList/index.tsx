@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { SharedElement } from 'react-navigation-shared-element';
+
 import * as S from './styles';
 
 const ItemComponent = ({ data }: any) => {

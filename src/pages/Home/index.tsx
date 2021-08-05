@@ -6,7 +6,7 @@ import ItemList from "../../components/ItemList";
 import Filter from "../../components/Filter";
 
 import * as S from './styles';
-import { findAllEntreprises, findEntreprisByNameAndCategory } from "../../services";
+import { findAllEntreprises, findEntrepriseByNameAndCategory } from "../../services";
 
 export function Home() {
   const [enterprises, setEnterprises] = useState([]);
@@ -46,7 +46,7 @@ export function Home() {
 
 
   function getEnterpriseByCategory(type: string) {
-    findEntreprisByNameAndCategory(authCredentials, type)
+    findEntrepriseByNameAndCategory(authCredentials, type)
       .then((res) => {
         setEnterprises(res.enterprises);
       })
