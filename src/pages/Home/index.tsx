@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Icon from "react-native-vector-icons/FontAwesome";
 
-import ItemList from "../../components/ItemList";
 import Api from "../../services/Api";
-import * as S from './styles';
+import ItemList from "../../components/ItemList";
+import Filter from "../../components/Filter";
 
+import * as S from './styles';
+import { findAllEntreprises, findEntreprisByNameAndCategory } from "../../services";
 
 export function Home() {
   const [enterprises, setEnterprises] = useState([]);
@@ -14,7 +15,7 @@ export function Home() {
   const authCredentials = useSelector((state: any) => state.auth);
 
   useEffect(() => {
-    async function getEnterprises() {
+    /* async function getEnterprises() {
       try {
         const result = await Api.get("/enterprises", {
           headers: {
@@ -29,8 +30,30 @@ export function Home() {
       }
     }
     getEnterprises();
-    setIsIndicator(false);
+    setIsIndicator(false); */
+    getAllEnterprise()
   }, []);
+
+
+  function getAllEnterprise() {
+    findAllEntreprises(authCredentials)
+      .then((res) => {
+        setEnterprises(res.enterprises);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsIndicator(false))
+  }
+
+
+  function getEnterpriseByCategory(type: string) {
+    findEntreprisByNameAndCategory(authCredentials, type)
+      .then((res) => {
+        setEnterprises(res.enterprises);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsIndicator(false))
+  }
+
 
   return (
     <S.Container>
@@ -38,11 +61,13 @@ export function Home() {
         <S.Indicator />
       ) : (
         <>
-          <S.ContainerInput>
-            <S.SearchText>Pesquisar</S.SearchText>
-            <Icon name="search" size={18} />
-          </S.ContainerInput>
-          <S.Title>{`${enterprises.length.toPrecision()} empresas disponíveis`}</S.Title>
+          <S.ContainerHeader>
+            <S.Logo source={require('../../assets/img/logo.png')} resizeMode="contain" />
+          </S.ContainerHeader>
+
+          <Filter getEnterpriseByCategory={getEnterpriseByCategory} getAllEnterprise={getAllEnterprise} />
+
+          <S.Title>{`${enterprises.length.toPrecision()} available enterprises`}</S.Title>
 
           <S.EnterprisesList
             data={enterprises}

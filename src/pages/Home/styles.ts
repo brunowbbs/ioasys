@@ -12,15 +12,21 @@ export const EnterprisesList = styled.FlatList`
 export const Indicator = styled.ActivityIndicator``;
 
 
-export const ContainerInput = styled.View`
-  border: 1px;
+export const ContainerHeader = styled.View`
+/*   border: 1px;
   border-radius: 8px;
   margin: 0 10px;
   height: 50px;
   flex-direction: row;
   align-items: center;
   padding: 0 15px;
-  justify-content: space-between;
+  justify-content: space-between; */
+ /* align-items: center; */
+ padding: 0 10px;
+`;
+
+export const Logo = styled.Image`
+  width: 120px;
 `;
 
 export const SearchText = styled.Text`
